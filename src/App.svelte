@@ -60,9 +60,12 @@
 <main>
   {#each NOISE_TYPES as n}
     <div
-      class="p-4 border-[12px]"
+      class="p-4 border-[12px] bg-opacity-40"
+      class:bg-yellow-800={n === "brown"}
       class:border-yellow-800={n === "brown"}
+      class:bg-pink-300={n === "pink"}
       class:border-pink-300={n === "pink"}
+      class:bg-neutral-200={n === "white"}
       class:border-neutral-200={n === "white"}
     >
       <button class="btn btn-primary w-full mb-2" on:click={() => handleClick(n)}>
