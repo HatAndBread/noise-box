@@ -15,7 +15,7 @@ export default defineConfig({
       manifest: {
         name: "Noise Box",
         short_name: "NoiseBox",
-        description: "A Noise Generator",
+        description: "Brown Pink and White Noise Generator",
         theme_color: "#ffffff",
         icons: [
           {
