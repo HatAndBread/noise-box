@@ -57,10 +57,10 @@
   };
 </script>
 
-<main>
+<main class="flex flex-col h-screen">
   {#each NOISE_TYPES as n}
     <div
-      class="p-4 border-[12px] bg-opacity-40"
+      class="p-2 border-[10px] bg-opacity-40 grow flex flex-col justify-center"
       class:bg-yellow-800={n === "brown"}
       class:border-yellow-800={n === "brown"}
       class:bg-pink-300={n === "pink"}
@@ -68,7 +68,10 @@
       class:bg-neutral-200={n === "white"}
       class:border-neutral-200={n === "white"}
     >
-      <button class="btn btn-primary w-full mb-2" on:click={() => handleClick(n)}>
+      <button
+        class="btn btn-neutral w-full mb-2 btn-sm"
+        on:click={() => handleClick(n)}
+      >
         <span class="relative flex h-3 w-3">
           {#if currentlyPlaying.includes(n)}
             <span
@@ -82,56 +85,66 @@
         </span>
         {currentlyPlaying.includes(n) ? "stop" : "start"}
       </button>
-      <div class="badge badge-neutral">Frequency</div>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={autoFilterDefaults.frequency}
-        step="0.1"
-        class="range range-xs"
-        on:input={(e) => adjustFrequency(n, e.currentTarget.value)}
-      />
-      <div class="badge badge-neutral">Base Frequency</div>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={autoFilterDefaults.baseFrequency}
-        step="0.1"
-        class="range range-xs"
-        on:input={(e) => adjustBaseFrequency(n, e.currentTarget.value)}
-      />
-      <div class="badge badge-neutral">Octaves</div>
-      <input
-        type="range"
-        min="0"
-        max="10"
-        value={autoFilterDefaults.octaves}
-        step="0.05"
-        class="range range-xs"
-        on:input={(e) => adjustOctaves(n, e.currentTarget.value)}
-      />
-      <div class="badge badge-neutral">Playback Rate</div>
-      <input
-        type="range"
-        min="0"
-        max="600"
-        value="0"
-        step="0.05"
-        class="range range-xs"
-        on:input={(e) => adjustPlaybackRate(n, e.currentTarget.value)}
-      />
-      <div class="badge badge-neutral">Volume</div>
-      <input
-        type="range"
-        min="-20"
-        max="20"
-        value="0"
-        step="1"
-        class="range range-xs"
-        on:input={(e) => adjustVolume(n, e.currentTarget.value)}
-      />
+      <div class="flex items-center w-full my-2">
+        <span class="w-14 text-xs"> Freq </span>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={autoFilterDefaults.frequency}
+          step="0.1"
+          class="range range-xs ml-2"
+          on:input={(e) => adjustFrequency(n, e.currentTarget.value)}
+        />
+      </div>
+      <div class="flex items-center w-full my-2">
+        <span class="w-14 text-xs"> Base </span>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={autoFilterDefaults.baseFrequency}
+          step="0.1"
+          class="range range-xs"
+          on:input={(e) => adjustBaseFrequency(n, e.currentTarget.value)}
+        />
+      </div>
+      <div class="flex items-center w-full my-2">
+        <span class="w-14 text-xs"> Octave </span>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={autoFilterDefaults.octaves}
+          step="0.05"
+          class="range range-xs"
+          on:input={(e) => adjustOctaves(n, e.currentTarget.value)}
+        />
+      </div>
+      <div class="flex items-center w-full my-2">
+        <span class="w-14 text-xs"> Pitch </span>
+        <input
+          type="range"
+          min="0"
+          max="600"
+          value="0"
+          step="0.05"
+          class="range range-xs"
+          on:input={(e) => adjustPlaybackRate(n, e.currentTarget.value)}
+        />
+      </div>
+      <div class="flex items-center w-full my-2">
+        <span class="w-14 text-xs"> Volume </span>
+        <input
+          type="range"
+          min="-20"
+          max="20"
+          value="0"
+          step="1"
+          class="range range-xs"
+          on:input={(e) => adjustVolume(n, e.currentTarget.value)}
+        />
+      </div>
     </div>
   {/each}
 </main>
