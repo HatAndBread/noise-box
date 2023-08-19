@@ -125,9 +125,9 @@
         <span class="w-14 text-xs"> Pitch </span>
         <input
           type="range"
-          min="0"
+          min="1"
           max="600"
-          value="0"
+          value="1"
           step="0.05"
           class="range range-xs"
           on:input={(e) => adjustPlaybackRate(n, e.currentTarget.value)}
